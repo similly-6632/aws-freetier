@@ -1,6 +1,6 @@
 ##
-# Define variables for Azure DevOps Seed Module
+# Define variables
 ##
 
-variable "name_of_s3_bucket" {}
-variable "dynamo_db_table_name" {}
+variable "prefix" {}
+variable "oidc_thumbprint" {}

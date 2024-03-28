@@ -23,7 +23,12 @@ provider "aws" {
 
 # Call the seed_module to build our ADO seed info
 module "bootstrap" {
-  source               = "./modules/bootstrap"
-  name_of_s3_bucket    = "srmlab-awsfreetier-terraform-state"
-  dynamo_db_table_name = "srmlab-awsfreetier-terraform-state-locks"
+  source          = "./modules/bootstrap"
+  prefix          = "srmlab-awsfreetier"
+  oidc_thumbprint = ["1b511abead59c6ce207077c0bf0e0043b1382612"]
+}
+
+output "github_actions_role_to_assume" {
+  description = "Role ARN to use in GitHub Actions"
+  value = module.bootstrap.github_actions_role_to_assume
 }
